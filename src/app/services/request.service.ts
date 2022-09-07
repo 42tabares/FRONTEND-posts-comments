@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { CreatePostCommand, Post } from './models';
+import { HttpClient , HttpHeaders } from '@angular/common/http';
+import { Observable} from 'rxjs';
+import { Post } from '../models/post';
+import { createPost } from '../models/createPost';
 
 @Injectable({
   providedIn: 'root'
@@ -10,18 +11,17 @@ export class RequestService {
 
   constructor(private client:HttpClient) { }
 
+  bringAllpost(){
+    return this.client.get<Post[]>('http://localhost:8080/bring/all/posts')
+  }
+
   httpOptions = {
-    headers : new HttpHeaders({'Content-Type' : 'application/json'})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   }
 
-  bringAllPosts(): Observable<Post[]>{
-    return this.client.get<Post[]>("PENDING")
+  createPost(command:createPost):Observable<Object>{
+   return this.client.post('http://localhost:8080/create/post', command, this.httpOptions)
   }
 
-  CreatePostAction(command:CreatePostCommand):Observable<object>{
-    return this.client.post("http://localhost:8080/create/post", command, this.httpOptions)
-  }
-  
-  
-  
+
 }

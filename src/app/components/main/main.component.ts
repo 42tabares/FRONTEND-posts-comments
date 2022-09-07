@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { Post } from 'src/app/services/models';
+import { Component, OnInit, Input } from '@angular/core';
 import { RequestService } from 'src/app/services/request.service';
+import { Post } from '../../models/post';
+import { createPost } from '../../models/createPost';
 
 @Component({
   selector: 'app-main',
@@ -9,17 +10,37 @@ import { RequestService } from 'src/app/services/request.service';
 })
 export class MainComponent implements OnInit {
 
-  posts ?: Post[]
-  
-  constructor(private requests:RequestService) { }
+  posts?:Post[];
 
-  //Will execute after main.componenet is rendered on the page
+  newTittle:string = '';
+  newAuthor:string = '';
+
+  constructor(private request:RequestService) { }
+
   ngOnInit(): void {
-    this.bringPosts()
+ //   this. bringPosts();
+
   }
 
   bringPosts(){
-    this.requests.bringAllPosts().subscribe(posts => this.posts = posts)
+    this.request.bringAllpost().subscribe(posts =>
+     {
+//      console.log(posts)
+      this.posts = posts} )
   }
+
+  submitPost(){
+    const newCommand:createPost = {
+    postId: Math.floor(Math.random() * 100000).toString(),
+    title: this.newTittle,
+    author: this.newAuthor
+    }
+
+    this.request.createPost(newCommand).subscribe()
+    this.newTittle= ''
+    this.newAuthor = ''
+
+  }
+
 
 }
