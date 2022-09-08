@@ -61,6 +61,7 @@ export class MainComponent implements OnInit {
   }
 
   closeSocketConnection(){
+    console.log("CLOSING")
     this.socketManager?.complete();
   }
 
