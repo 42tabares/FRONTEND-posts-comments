@@ -12,32 +12,29 @@ export class MainComponent implements OnInit {
 
   posts?:Post[];
 
-  newTittle:string = '';
+  newTitle:string = '';
   newAuthor:string = '';
 
   constructor(private request:RequestService) { }
 
   ngOnInit(): void {
- //   this. bringPosts();
-
+   this.buildPosts();
   }
 
-  bringPosts(){
+  buildPosts(){
     this.request.bringAllpost().subscribe(posts =>
-     {
-//      console.log(posts)
-      this.posts = posts} )
+     {this.posts = posts} )
   }
 
   submitPost(){
     const newCommand:createPost = {
     postId: Math.floor(Math.random() * 100000).toString(),
-    title: this.newTittle,
+    title: this.newTitle,
     author: this.newAuthor
     }
 
     this.request.createPost(newCommand).subscribe()
-    this.newTittle= ''
+    this.newTitle= ''
     this.newAuthor = ''
 
   }

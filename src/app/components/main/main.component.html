@@ -1,9 +1,11 @@
 
 <h2>Main</h2>
-<label for = "newTittle">Tittle: </label>
-<input name = "newTittle" type="text" [(ngModel)]="newTittle" placeholder ="newTittle">
+
+<label for = "newTitle">Tittle: </label>
+<input name = "newTitle" type="text" [(ngModel)]="newTitle" placeholder ="Title Name">
 <label for = "newAuthor">Author: </label>
-<input name = "newAuthor" type="text" [(ngModel)]="newAuthor" placeholder ="newAuthor">
+<input name = "newAuthor" type="text" [(ngModel)]="newAuthor" placeholder ="Author Name">
+
 <button (click)="submitPost()">Save Post</button>
 <div *ngIf="posts">
 <div *ngFor="let post of posts">

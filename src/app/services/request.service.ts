@@ -12,7 +12,12 @@ export class RequestService {
   constructor(private client:HttpClient) { }
 
   bringAllpost(){
-    return this.client.get<Post[]>('http://localhost:8080/bring/all/posts')
+    return this.client.get<Post[]>('http://localhost:8081/getAll/posts')
+
+  }
+  bringPostByID(id:string){
+    return this.client.get<Post>('http://localhost:8081/getpostbyid/'+ id)
+
   }
 
   httpOptions = {
@@ -22,6 +27,9 @@ export class RequestService {
   createPost(command:createPost):Observable<Object>{
    return this.client.post('http://localhost:8080/create/post', command, this.httpOptions)
   }
+  addComment(command:Comment):Observable<Object>{
+    return this.client.post('http://localhost:8080/add/comment', command, this.httpOptions)
+   }
 
 
 }
