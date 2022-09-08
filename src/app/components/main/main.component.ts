@@ -14,6 +14,7 @@ export class MainComponent implements OnInit {
 
   newTitle:string = '';
   newAuthor:string = '';
+  favorite:string = '';
 
   constructor(private request:RequestService) { }
 
@@ -30,13 +31,13 @@ export class MainComponent implements OnInit {
     const newCommand:createPost = {
     postId: Math.floor(Math.random() * 100000).toString(),
     title: this.newTitle,
-    author: this.newAuthor
+    author: this.newAuthor,
+    favorite: this.favorite
     }
 
     this.request.createPost(newCommand).subscribe()
     this.newTitle= ''
     this.newAuthor = ''
-
   }
 
 

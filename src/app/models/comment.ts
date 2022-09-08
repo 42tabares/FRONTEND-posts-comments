@@ -3,5 +3,5 @@ export type CommentType = {
   postId: string,
   author: string,
   content: string,
-  font: string
+  favorite: string
 }
