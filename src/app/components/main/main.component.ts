@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { RequestService } from 'src/app/services/request.service';
 import { Post } from '../../models/post';
 import { createPost } from '../../models/createPost';
+import { WebSocketSubject } from 'rxjs/webSocket';
+import { SocketService } from 'src/app/services/socket.service';
 
 @Component({
   selector: 'app-main',
@@ -10,16 +12,21 @@ import { createPost } from '../../models/createPost';
 })
 export class MainComponent implements OnInit {
 
+  socketManager?:WebSocketSubject<Post>;
   posts?:Post[];
 
   newTitle:string = '';
   newAuthor:string = '';
   favorite:string = '';
 
-  constructor(private request:RequestService) { }
+  constructor(
+    private request:RequestService, 
+    private socket:SocketService) 
+    {}
 
   ngOnInit(): void {
    this.buildPosts();
+   this.establishConnection();
   }
 
   buildPosts(){
@@ -39,6 +46,24 @@ export class MainComponent implements OnInit {
     this.newTitle= ''
     this.newAuthor = ''
   }
+
+  establishConnection(){
+    this.socketManager = this.socket.connectToGeneral();
+    this.socketManager.subscribe((message) =>{
+      this.addPost(message)
+    })
+  }
+
+  addPost(post:Post){
+    this.newAuthor = ''
+    this.newTitle = ''
+    this.posts?.unshift(post)
+  }
+
+  closeSocketConnection(){
+    this.socketManager?.complete();
+  }
+
 
 
 }
