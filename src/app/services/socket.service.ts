@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import {webSocket, WebSocketSubject} from 'rxjs/webSocket';
+import { CommentType } from '../models/comment';
 import { Post } from '../models/post';
 
 
@@ -15,8 +16,8 @@ export class SocketService {
     return webSocket('ws://localhost:8082/retrieve/mainSpace')
   }
 
-  connectToPost(post:string):WebSocketSubject<Comment>{
-    console.log("Connecting to post..." + post)
-    return webSocket('ws://localhost:8082/retrieve/${post}')
+  connectToPost(post:string):WebSocketSubject<CommentType>{
+    console.log("Connecting to post... " + post)
+    return webSocket('ws://localhost:8082/retrieve/' + post)
   }
 }

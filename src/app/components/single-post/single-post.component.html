@@ -1,7 +1,19 @@
 <h3>Title: {{post?.title}}</h3>
 <p>Author: {{post?.author}}</p>
-<div *ngIf="post?.comments">
-  <div *ngFor="let comment of post?.comments">
-    <app-single-comment [comment] = "comment"></app-single-comment>
+
+<div class="comment-area">
+
+  <div *ngIf="post?.comments">
+    <div *ngFor="let comment of post?.comments">
+      <app-single-comment [comment] = "comment"></app-single-comment>
+    </div>
   </div>
+
+  <div>
+    <label>Add a comment:</label>
+    <input name = "newAuthor" type="text" [(ngModel)]="newAuthor" placeholder ="Title Name">
+    <input name = "newContent" type="text" [(ngModel)]="newContent" placeholder ="Title Name">
+    <button (click)="submitComment()">Save Post</button>
+  </div>
+  
 </div>

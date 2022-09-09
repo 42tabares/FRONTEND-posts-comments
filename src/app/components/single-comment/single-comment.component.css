@@ -1,0 +1,23 @@
+.single-comment{
+    display: flex;
+    background-color: lightseagreen;
+    border-radius: 15px;
+}
+
+
+.comment-author{
+    margin: 5px 10px;
+}
+
+.comment-author > h5{
+    margin: 0px;
+}
+
+.comment-content{
+    margin: 5px 0px;
+}
+
+.comment-content > p{
+    margin: 0px;
+}
+

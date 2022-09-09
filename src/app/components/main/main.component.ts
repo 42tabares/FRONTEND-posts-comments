@@ -30,8 +30,10 @@ export class MainComponent implements OnInit {
   }
 
   buildPosts(){
+    console.log("BUILDINGPOSTS")
     this.request.bringAllpost().subscribe(posts =>
      {this.posts = posts} )
+     console.log("POSTSBUILT")
   }
 
   submitPost(){
@@ -61,7 +63,6 @@ export class MainComponent implements OnInit {
   }
 
   closeSocketConnection(){
-    console.log("CLOSING")
     this.socketManager?.complete();
   }
 

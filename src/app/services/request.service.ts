@@ -3,6 +3,7 @@ import { HttpClient , HttpHeaders } from '@angular/common/http';
 import { Observable} from 'rxjs';
 import { Post } from '../models/post';
 import { createPost } from '../models/createPost';
+import { CommentType } from '../models/comment';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +28,7 @@ export class RequestService {
   createPost(command:createPost):Observable<Object>{
    return this.client.post('http://localhost:8080/create/post', command, this.httpOptions)
   }
-  addComment(command:Comment):Observable<Object>{
+  addComment(command:CommentType):Observable<Object>{
     return this.client.post('http://localhost:8080/add/comment', command, this.httpOptions)
    }
 
