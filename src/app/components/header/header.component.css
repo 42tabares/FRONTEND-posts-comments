@@ -1,0 +1,11 @@
+.placeholder > h1 {
+ color: black;
+ margin: 0px;
+}
+
+.placeholder{
+    background-color: lightsteelblue;
+    width: 150%;
+    height: auto;
+    padding: 20px 10px;
+}
