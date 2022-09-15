@@ -13,11 +13,11 @@ export class SocketService {
 
   connectToGeneral():WebSocketSubject<Post>{
     console.log("Connecting to general Socket")
-    return webSocket('ws://localhost:8082/retrieve/mainSpace')
+    return webSocket('wss://gamma-posts-comments-42t.herokuapp.com/retrieve/mainSpace')
   }
 
   connectToPost(post:string):WebSocketSubject<CommentType>{
     console.log("Connecting to post... " + post)
-    return webSocket('ws://localhost:8082/retrieve/' + post)
+    return webSocket('wss://gamma-posts-comments-42t.herokuapp.com/retrieve/' + post)
   }
 }
