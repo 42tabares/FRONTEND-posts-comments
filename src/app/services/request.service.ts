@@ -32,5 +32,8 @@ export class RequestService {
     return this.client.post('https://alpha-posts-comments-42t.herokuapp.com/add/comment', body, this.httpOptions)
   }
 
+  loginRequest(body:any):Observable<Object>{
+    return this.client.post('http://localhost:8080/auth/login', body, this.httpOptions)
+  }
 
 }
