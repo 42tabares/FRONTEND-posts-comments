@@ -1,5 +1,14 @@
 {
   "projects": {
     "default": "posts-comments-42t"
+  },
+  "targets": {
+    "posts-comments-42t": {
+      "hosting": {
+        "dummy-app": [
+          "posts-comments-42t"
+        ]
+      }
+    }
   }
 }

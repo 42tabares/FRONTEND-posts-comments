@@ -4,6 +4,7 @@ import { Post } from '../../models/post';
 import { createPost } from '../../models/createPost';
 import { WebSocketSubject } from 'rxjs/webSocket';
 import { SocketService } from 'src/app/services/socket.service';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
   selector: 'app-main',
@@ -18,15 +19,30 @@ export class MainComponent implements OnInit {
   newTitle:string = '';
   newAuthor:string = '';
   favorite:string = '';
+  actualState:any 
 
   constructor(
     private request:RequestService, 
-    private socket:SocketService) 
-    {}
+    private socket:SocketService,
+    private state:StateService,
+    ){}
 
   ngOnInit(): void {
-   this.buildPosts();
-   this.establishConnection();
+    this.validate();
+    this.buildPosts();
+    this.establishConnection();
+  }
+
+  validate(){
+    let validation = false;
+    this.state.state.subscribe(currentState =>{
+      if(!currentState.loggedIn){
+        return
+      }
+      validation = true
+      this.actualState = currentState
+    })
+    return validation
   }
 
   buildPosts(){

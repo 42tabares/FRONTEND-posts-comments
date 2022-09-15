@@ -1,11 +1,17 @@
 .placeholder > h1 {
  color: black;
- margin: 0px;
+ margin-left: 15px;
 }
 
 .placeholder{
     background-color: lightsteelblue;
-    width: 150%;
+    width: 100%;
     height: auto;
-    padding: 20px 10px;
+    padding: 10px 0px;
+    display: flex;
+}
+
+app-login-button{
+    margin: 20px 0px 0px 65%;
+    padding: 0px;
 }

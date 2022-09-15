@@ -8,6 +8,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SinglePostComponent } from './components/single-post/single-post.component';
 import { SingleCommentComponent } from './components/single-comment/single-comment.component';
+import { provideFirebaseApp, initializeApp } from '@angular/fire/app'
+import { provideAuth, getAuth } from '@angular/fire/auth'
+import { environment } from 'src/environments/environment';
+import { LoginButtonComponent } from './components/login-button/login-button.component';
 
 @NgModule({
   declarations: [
@@ -16,12 +20,15 @@ import { SingleCommentComponent } from './components/single-comment/single-comme
     FooterComponent,
     HeaderComponent,
     SinglePostComponent,
-    SingleCommentComponent
+    SingleCommentComponent,
+    LoginButtonComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    provideFirebaseApp(()=> initializeApp(environment.firebase)), 
+    provideAuth(() => getAuth())
   ],
   providers: [],
   bootstrap: [AppComponent]
