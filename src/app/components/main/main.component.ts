@@ -60,9 +60,10 @@ export class MainComponent implements OnInit {
     favorite: this.favorite
     }
 
-    this.request.createPost(newCommand).subscribe()
+    console.log(this.actualState.token)
+
+    this.request.createPost(newCommand,this.actualState.token.access_token).subscribe()
     this.newTitle= ''
-    this.newAuthor = ''
   }
 
   establishConnection(){

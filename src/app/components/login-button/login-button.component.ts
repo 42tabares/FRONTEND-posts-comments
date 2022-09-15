@@ -32,7 +32,7 @@ export class LoginButtonComponent implements OnInit {
         password:response.user.email
       }).subscribe(token => {
         
-
+        console.log(token)
         if (token){
           //When we got the token we'll update the state
           this.state.state.next({
@@ -41,7 +41,7 @@ export class LoginButtonComponent implements OnInit {
             token:token
           })
         }
-        
+
       })
     }
   }

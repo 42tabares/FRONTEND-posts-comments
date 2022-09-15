@@ -25,15 +25,20 @@ export class RequestService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json'})
   }
 
-  createPost(body:createPost):Observable<Object>{
-   return this.client.post('https://alpha-posts-comments-42t.herokuapp.com/create/post', body, this.httpOptions)
+  //'https://alpha-posts-comments-42t.herokuapp.com/create/post'
+  // https://alpha-posts-comments-42t.herokuapp.com/add/comment
+
+
+  createPost(body:createPost,token:string):Observable<Object>{
+    console.log()
+   return this.client.post<any>('https://alpha-posts-comments-42t.herokuapp.com/create/post', body, {headers: new HttpHeaders({ 'Content-Type': 'application/json', 'Authorization' : `Bearer ${token}`})})
   }
   addComment(body:CommentType):Observable<Object>{
     return this.client.post('https://alpha-posts-comments-42t.herokuapp.com/add/comment', body, this.httpOptions)
   }
 
   loginRequest(body:any):Observable<Object>{
-    return this.client.post('http://localhost:8080/auth/login', body, this.httpOptions)
+    return this.client.post('https://alpha-posts-comments-42t.herokuapp.com/auth/login', body, this.httpOptions)
   }
 
 }

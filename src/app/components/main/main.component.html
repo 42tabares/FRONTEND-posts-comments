@@ -6,7 +6,7 @@
   <input name = "newTitle" type="text" [(ngModel)]="newTitle" placeholder ="Title Name">
   <label for = "newAuthor">Author: </label>
   <input name = "newAuthor" type="text" [(ngModel)]="newAuthor" placeholder ="Author Name">
-  <button (click)="submitPost()">Save Post</button>
+  <button [disabled]="!validate()" (click)="submitPost()">Save Post</button>
 
 </div>
 
