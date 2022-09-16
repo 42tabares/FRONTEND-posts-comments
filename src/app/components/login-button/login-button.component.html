@@ -1,1 +1,1 @@
-<button (click)="loginGoogle()">LOGIN</button>
+<button [disabled]="verified" (click)="loginGoogle()" class="button">{{logStatus}}</button>

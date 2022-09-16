@@ -15,12 +15,12 @@ export class CommentFormComponent implements OnInit {
 
   newAuthor:string = '';
   newContent:string = '';
+  connected:boolean = false;
   post?:Post;
   socketManager?:WebSocketSubject<CommentType>;
 
   constructor(    
     private request: RequestService,
-    private socket: SocketService,
     private state: StateService) 
     { }
 
@@ -31,11 +31,16 @@ export class CommentFormComponent implements OnInit {
   waitForPost(){
     this.state.postSelected.subscribe((post) => {
       this.post = post
-      console.log("Ready to comment to " + post.aggregateId)
+      this.connected = true;
     })
   }
 
   submitComment(): void{
+
+    if (this.newContent === ''){
+      alert("The Content must not be empty!")
+      return
+    }
 
     if (this.newAuthor === ''){
       this.newAuthor='Anonymous'
@@ -51,7 +56,6 @@ export class CommentFormComponent implements OnInit {
 
     this.request.addComment(newComment).subscribe()
     this.newContent= ''
-    this.newAuthor = ''
   }
 
 }

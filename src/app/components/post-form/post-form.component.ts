@@ -37,6 +37,17 @@ export class PostFormComponent implements OnInit {
   }
 
   submitPost(){
+
+    if (this.newTitle === ''){
+      alert("Title must not be empty!")
+      return
+    }
+
+    if (this.newAuthor === ''){
+      this.newAuthor = "Anonymous"
+    }
+
+
     const newCommand:createPost = {
     postId: Math.floor(Math.random() * 100000).toString(),
     title: this.newTitle,
@@ -48,6 +59,7 @@ export class PostFormComponent implements OnInit {
 
     this.request.createPost(newCommand,this.actualState.token.access_token).subscribe()
     this.newTitle= ''
+    this.newAuthor=''
   }
 }
 

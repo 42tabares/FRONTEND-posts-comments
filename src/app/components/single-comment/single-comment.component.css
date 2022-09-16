@@ -1,24 +1,17 @@
 .single-comment{
-    display: flex;
-    background-color: lightseagreen;
-    border-radius: 15px;
-    margin: 5px 0px;
+    color: var(--fontcolor);
+    margin: 10px 30px;
+    padding: 10px;
+    background: #0d1d48b5;
+    display: grid;
+    align-items: center;
+    border-radius: 10px;
 }
 
-
-.comment-author{
-    margin: 5px 10px;
-}
-
-.comment-author > h5{
+p, h5{
     margin: 0px;
 }
 
-.comment-content{
-    margin: 5px 0px;
+p{
+    margin-top: 5px;
 }
-
-.comment-content > p{
-    margin: 0px;
-}
-

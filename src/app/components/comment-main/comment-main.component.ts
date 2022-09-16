@@ -35,7 +35,6 @@ export class CommentMainComponent implements OnInit {
       
       this.establishConnection(post.aggregateId)
       this.post = post;
-      console.log("LISTENING POST! " + post.comments)
 
 
     })
@@ -56,10 +55,10 @@ export class CommentMainComponent implements OnInit {
   }
 
 
-  establishConnection(id:string){   
+  establishConnection(id:string){
+    this.socketManager?.complete()   
     this.socketManager = this.socket.connectToPost(id);
     this.socketManager?.subscribe((message) => {
-      console.log(message)
       this.addComment(message)})
   }
 

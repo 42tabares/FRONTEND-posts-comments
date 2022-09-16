@@ -1,0 +1,8 @@
+.comment-area{
+    background-color: var(--background);
+    background-image: url("logo.png");
+    overflow-x: auto;
+    border-radius: 5px;
+    width: auto;
+    height: 440px;
+}

@@ -9,3 +9,7 @@
     height: 270px;
     overflow-x: auto;
 }
+
+.comment-container{
+    margin-left: 20px;
+}

@@ -1,0 +1,10 @@
+.comment-author-input, .comment-content-input {
+    padding: 5px;
+    border: 0px;
+    border-radius: 3px;
+    margin: 15px 10px;
+}
+
+.comment-content-input{
+    width: 500px;
+}

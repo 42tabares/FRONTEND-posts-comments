@@ -11,9 +11,11 @@ import { StateService } from 'src/app/services/state.service';
 })
 export class LoginButtonComponent implements OnInit {
 
+  logStatus:string = "Log In";
+  verified:boolean = false;
+
   constructor(
     private authService:AuthService,
-    private router:Router,
     private state:StateService,
     private request:RequestService
     ) { }
@@ -40,6 +42,11 @@ export class LoginButtonComponent implements OnInit {
             authenticatedPerson: response,
             token:token
           })
+
+          this.logStatus = "Logged!"
+          this.verified = true
+
+
         }
 
       })

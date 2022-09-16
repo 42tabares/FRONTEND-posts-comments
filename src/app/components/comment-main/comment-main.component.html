@@ -1,8 +1,12 @@
 
-<div *ngIf="post?.comments">
-    <div *ngFor="let comment of post?.comments">
-        <app-single-comment [comment] = "comment"></app-single-comment>
+<div class="comment-area">
+    <div *ngIf="post?.comments">
+        <div *ngFor="let comment of post?.comments">
+            <app-single-comment [comment] = "comment"></app-single-comment>
+        </div>
     </div>
 </div>
 
-<app-comment-form></app-comment-form>
+<div class="comment-form">
+    <app-comment-form></app-comment-form>
+</div>
