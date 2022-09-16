@@ -46,10 +46,10 @@ export class MainComponent implements OnInit {
   }
 
   buildPosts(){
-    console.log("BUILDINGPOSTS")
+    console.log("BUILDING POSTS")
     this.request.bringAllpost().subscribe(posts =>
      {this.posts = posts} )
-     console.log("POSTSBUILT")
+     console.log("POSTS BUILT")
   }
 
   submitPost(){
@@ -59,8 +59,6 @@ export class MainComponent implements OnInit {
     author: this.newAuthor,
     favorite: this.favorite
     }
-
-    console.log(this.actualState.token)
 
     this.request.createPost(newCommand,this.actualState.token.access_token).subscribe()
     this.newTitle= ''
@@ -82,7 +80,5 @@ export class MainComponent implements OnInit {
   closeSocketConnection(){
     this.socketManager?.complete();
   }
-
-
 
 }

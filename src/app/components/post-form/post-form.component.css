@@ -1,0 +1,23 @@
+.post-form{
+    color: var(--fontcolor);
+    margin-bottom: 13px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+}
+
+.form-group-input{
+    padding: 5px;
+    border: 0px;
+    border-radius: 3px;
+    margin: 5px 10px;
+}
+
+.form-group-label{
+    font-weight: bold;
+}
+

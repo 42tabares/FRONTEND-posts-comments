@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Post } from 'src/app/models/post';
+import { BehaviorSubject, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -14,6 +15,7 @@ export class StateService {
 
   state = new BehaviorSubject(this.initialState);
 
-
+  postSelected = new Subject<Post>();
+  
   constructor() { }
 }

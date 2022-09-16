@@ -1,0 +1,6 @@
+<form class="comment-form">
+    <label>Add a comment:</label>
+    <input class="comment-author-input" maxlength="25" name = "newAuthor" type="text" [(ngModel)]="newAuthor" placeholder ="Author">
+    <input class="comment-content-input" required maxlength="140" name = "newContent" type="text" [(ngModel)]="newContent" placeholder ="Max 140 characters">
+    <button type="submit" (click)="submitComment()">Comment</button>
+</form>

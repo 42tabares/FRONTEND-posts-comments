@@ -12,6 +12,9 @@ import { provideFirebaseApp, initializeApp } from '@angular/fire/app'
 import { provideAuth, getAuth } from '@angular/fire/auth'
 import { environment } from 'src/environments/environment';
 import { LoginButtonComponent } from './components/login-button/login-button.component';
+import { CommentMainComponent } from './components/comment-main/comment-main.component';
+import { PostFormComponent } from './components/post-form/post-form.component';
+import { CommentFormComponent } from './components/comment-form/comment-form.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { LoginButtonComponent } from './components/login-button/login-button.com
     SinglePostComponent,
     SingleCommentComponent,
     LoginButtonComponent,
+    CommentMainComponent,
+    PostFormComponent,
+    CommentFormComponent,
   ],
   imports: [
     BrowserModule,

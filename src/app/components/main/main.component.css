@@ -1,8 +1,11 @@
-.post-form{
-    margin: 15px;
+.content{
+    display: grid;
+    grid-template-columns: 30% 70%;
+    padding: 20px 50px;
+    background: var(--foreground);
 }
 
-input{
-    margin: 0px 4px;
-    
+.post-container{
+    height: 270px;
+    overflow-x: auto;
 }

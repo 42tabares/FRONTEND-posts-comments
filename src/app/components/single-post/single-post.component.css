@@ -1,33 +1,15 @@
 .single-post{
-    background-color: dodgerblue;
-    display: flexbox;
-    border-radius: 15px;
-    padding: 15px;
-    margin: 10px;
-    border: solid;
-    border-width: 2px;
-    border-color: darkblue;
-    height: auto;
-    width: 70%;
+    color: var(--fontcolor);
+    background: var(--background);
+    padding: 10px;
 }
 
-.single-post > h3{
-    margin: 5px;
+.post-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.single-post > p{
-    margin-left: 5px;
-}
-
-.comment-form{
-    margin-top: 10px;
-}
-
-.comment-author-input{
-    width: 80px;
-    height: auto;
-}
-
-.comment-content-input{
-
+.button, .author, .title{
+    margin: 5px 0px;
 }

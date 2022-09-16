@@ -1,17 +1,11 @@
-.placeholder > h1 {
- color: black;
- margin-left: 15px;
-}
-
-.placeholder{
-    background-color: lightsteelblue;
-    width: 100%;
-    height: auto;
-    padding: 10px 0px;
+.header{
+    background: var(--background);
     display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
 }
 
-app-login-button{
-    margin: 20px 0px 0px 65%;
-    padding: 0px;
+.title{
+    color: var(--fontcolor);
 }

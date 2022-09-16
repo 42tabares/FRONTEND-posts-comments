@@ -1,11 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
 import { Post } from 'src/app/models/post';
-import { CommentType } from 'src/app/models/comment';
-import { RequestService } from 'src/app/services/request.service';
-import { SocketService } from 'src/app/services/socket.service';
-import { WebSocketSubject } from 'rxjs/internal/observable/dom/WebSocketSubject';
-import { RouterTestingModule } from "@angular/router/testing";
+import { StateService } from 'src/app/services/state.service';
+
 
 @Component({
   selector: 'app-single-post',
@@ -16,53 +12,30 @@ export class SinglePostComponent implements OnInit {
 
   @Input()  post?:Post;
 
-  newAuthor:string = '';
-  newContent:string = '';
-  postID:string = '';
-  socketManager?:WebSocketSubject<CommentType>;
+  actualState:any
 
   constructor(
-    private request: RequestService,
-    private socket: SocketService
+    private state: StateService
   ) { }
 
   ngOnInit(): void {
-    this.identifyPost();
-    this.establishConnection();
   }
 
-  identifyPost(){
-    this.postID = this.post?.aggregateId!
+  validate(){
+    let validation = false;
+    this.state.state.subscribe(currentState =>{
+      if(!currentState.loggedIn){
+        return
+      }
+      validation = true
+      this.actualState = currentState
+    })
+    return validation
   }
 
-  submitComment(): void{
-    const newComment:CommentType = {
-      commentId: Math.floor(Math.random() * 100000).toString(),
-      postId: this.postID,
-      author: this.newAuthor,
-      content: this.newContent,
-      favorite: "false"
-    }
-
-    this.request.addComment(newComment).subscribe()
-    this.newContent= ''
-    this.newAuthor = ''
+  selectPost(){
+    this.state.postSelected.next(this.post!)
   }
 
-  establishConnection(){
-    
-    this.socketManager = this.socket.connectToPost(this.postID);
-    this.socketManager?.subscribe((message) => {
-      this.addComment(message)})
-
-  }
-
-  addComment(comment:CommentType){
-
-    this.newContent= ''
-    this.newAuthor = ''
-    this.post?.comments.unshift(comment)
-
-  }
 
 }

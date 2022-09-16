@@ -1,4 +1,29 @@
+/* You can add global styles to this file, and also import other style files */
+:root{
+    --background:#192a56;
+    --foreground:#273c75;
+    --fontcolor: #f5f6fa;
+    --button-hover:#8c7ae6;
+    --button:#9c88ff;
+    --success: #44bd32;
+    --danger:#c23616;
+    --warning:#e1b12c;
+    --info:#0097e6;
+}
+
 body{
     margin: 0px;
+    font-family: "DM Sans", Sans-serif;
 }
-/* You can add global styles to this file, and also import other style files */
+
+.button{
+    margin: 5px auto 0px auto;
+    border-radius: 3px;
+    background: var(--button);
+    padding: 5px 30px;
+    border: 0px;
+}
+
+.button:enabled:hover{
+    background: var(--button-hover);
+}
